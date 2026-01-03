@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   vite-app:
-    build: .
+    image: ajaykushwaha05/jenkins-vite:latest
     container_name: jenkins-vite
     ports:
       - "9000:9000"
