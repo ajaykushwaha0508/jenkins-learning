@@ -1,9 +1,8 @@
-version: "3.8"
+version: "3.3"
 
 services:
   vite-app:
-    build: 
-       context: .
+    build: .
     container_name: jekins-vite
     ports:
       - "9000:9000"
