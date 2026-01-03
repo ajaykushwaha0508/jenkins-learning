@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <DiJenkins size={500} />
-      <h1>This is jenkins learning project with gihub hooked 100</h1>
+      <h1>This is jenkins learning project with gihub hooked 200</h1>
     </>
   )
 }
