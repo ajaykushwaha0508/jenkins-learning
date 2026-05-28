@@ -79,7 +79,7 @@ pipeline {
     post {
 
         success {
-            echo 'Build Successful 🚀'
+            echo 'Build Successfully 🚀'
         }
 
         failure {
