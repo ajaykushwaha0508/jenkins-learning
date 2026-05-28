@@ -47,23 +47,39 @@
 // }
 
 
-
+// this code change is for my revising 
 pipeline {
 
     agent any
 
+    tools {
+        nodejs "NodeJS"
+    }
+
     stages {
 
-        stage('Install') {
+        stage('Install Dependencies') {
             steps {
                 bat 'npm install'
             }
         }
 
-        stage('Run App') {
+        stage('Build Project') {
             steps {
-                bat 'node index.js'
+                bat 'npm run build'
             }
+        }
+
+    }
+
+    post {
+
+        success {
+            echo 'Build Successful 🚀'
+        }
+
+        failure {
+            echo 'Build Failed ❌'
         }
 
     }
