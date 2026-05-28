@@ -58,6 +58,13 @@ pipeline {
 
     stages {
 
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/ajaykushwaha0508/jenkins-learning.git'
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
