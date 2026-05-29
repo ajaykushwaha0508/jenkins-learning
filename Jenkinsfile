@@ -96,8 +96,8 @@ pipeline {
                         passwordVariable: "dockerPass"
                     )]){
                     bat "docker login -u ${env.dockerUsername} -p ${env.dockerPass} "
-                    bat "docker image tag ${react-app}:${latest} ${env.dockerUsername}/${react-app}:${latest}"
-                    bat "docker push ${env.dockerUsername}/${react-app}:${latest}"
+                    bat "docker image tag ${"react-app"}:${"latest"} ${env.dockerUsername}/${"react-app"}:${"latest"}"
+                    bat "docker push ${env.dockerUsername}/${"react-app"}:${"latest"}"
                 }
             }
         }
