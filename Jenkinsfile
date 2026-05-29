@@ -48,6 +48,7 @@
 
 
 // this code change is for my revising 
+@Library("Demo_sharedLib") _
 pipeline {
 
     agent any
@@ -77,7 +78,8 @@ pipeline {
        stage('docker build'){
                steps{
                 echo "this is building image in docker"
-                bat "docker build -t react-app:latest ."
+                // bat "docker build -t react-app:latest ."
+                docker_build("react-app" , "latest")
                }
         }
 
