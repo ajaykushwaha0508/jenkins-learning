@@ -97,7 +97,7 @@ pipeline {
                     )]){
                     sh "docker login -u ${env.dockerUsername} -p ${env.dockerPass} "
                     sh "docker image tag ${react-app}:${latest} ${env.dockerUsername}/${react-app}:${latest}"
-                    sh "docker push ${env.dockerUsername}/${react-app}:${latest}
+                    sh "docker push ${env.dockerUsername}/${react-app}:${latest}"
                 }
             }
         }
