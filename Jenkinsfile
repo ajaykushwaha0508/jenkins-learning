@@ -79,7 +79,9 @@ pipeline {
                steps{
                 echo "this is building image in docker"
                 // bat "docker build -t react-app:latest ."
-                docker_build("react-app" , "latest")
+                script{
+                      docker_build("react-app" , "latest")
+                     }
                }
         }
 
