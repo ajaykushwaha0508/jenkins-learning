@@ -85,6 +85,23 @@ pipeline {
                }
         }
 
+
+        stage("push to docker hub"){
+            steps{
+                echo "Pushing to docker hub"
+                withCredentials([
+                    usernamePassword(
+                       credentialsId: "DockerHubCreds",
+                       usernameVariable: "dockerUsername",
+                        passwordVariable: "dockerPass"
+                    )]){
+                    sh "docker login -u ${env.dockerUsername} -p ${env.dockerPass} "
+                    sh "docker image tag ${react-app}:${latest} ${env.dockerUsername}/${react-app}:${latest}"
+                    sh "docker push ${env.dockerUsername}/${react-app}:${latest}
+                }
+            }
+        }
+
         stage('docker deploy'){
                steps {
                 bat 'docker stop react-app-con || exit 0'
