@@ -84,7 +84,7 @@ pipeline {
         stage('docker deploy'){
                steps{
                 echo "this is deploying"
-                sh "docker run -d -p 9000:9000 react-app:latest"
+                bat "docker run -d -p 9000:9000 react-app:latest"
                }
         }
 
