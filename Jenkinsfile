@@ -85,7 +85,7 @@ pipeline {
                steps {
                 bat 'docker stop react-app-con || exit 0'
                 bat 'docker rm react-app-con || exit 0'
-                bat 'docker run -d -p 3000:80 --name react-app-con react-app'
+                bat 'docker run -d -p 9000:6000 --name react-app-con react-app'
             }
         }
 
