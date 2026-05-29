@@ -107,7 +107,7 @@ pipeline {
                 bat 'docker stop react-app-con || exit 0'
                 bat 'docker rm react-app-con || exit 0'
                 bat 'docker run -d -p 80:9000 --name react-app-con react-app'
-                bat  'docker image prune'
+               
             }
         }
 
