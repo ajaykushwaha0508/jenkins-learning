@@ -48,7 +48,7 @@
 
 
 // this code change is for my revising 
-// @Library("Demo_sharedLib") _
+@Library("Demo_sharedLib") _
 pipeline {
 
     agent any
@@ -75,41 +75,41 @@ pipeline {
             }
         }
 
-       // stage('docker build'){
-       //         steps{
-       //          echo "this is building image in docker"
-       //          // bat "docker build -t react-app:latest ."
-       //          // script{
-       //          //       docker_build("react-app" , "latest")
-       //          //      }
-       //         }
-       //  }
+       stage('docker build'){
+               steps{
+                echo "this is building image in docker"
+                bat "docker build -t react-app:latest ."
+                script{
+                      docker_build("react-app" , "latest")
+                     }
+               }
+        }
 
 
-        // stage("push to docker hub"){
-        //     steps{
-        //         echo "Pushing to docker hub"
-        //         withCredentials([
-        //             usernamePassword(
-        //                credentialsId: "DockerHubCreds",
-        //                usernameVariable: "dockerUsername",
-        //                 passwordVariable: "dockerPass"
-        //             )]){
-        //             bat "docker login -u ${env.dockerUsername} -p ${env.dockerPass} "
-        //             bat "docker image tag ${"react-app"}:${"latest"} ${env.dockerUsername}/${"react-app"}:${"latest"}"
-        //             bat "docker push ${env.dockerUsername}/${"react-app"}:${"latest"}"
-        //         }
-        //     }
-        // }
+        stage("push to docker hub"){
+            steps{
+                echo "Pushing to docker hub"
+                withCredentials([
+                    usernamePassword(
+                       credentialsId: "DockerHubCreds",
+                       usernameVariable: "dockerUsername",
+                        passwordVariable: "dockerPass"
+                    )]){
+                    bat "docker login -u ${env.dockerUsername} -p ${env.dockerPass} "
+                    bat "docker image tag ${"react-app"}:${"latest"} ${env.dockerUsername}/${"react-app"}:${"latest"}"
+                    bat "docker push ${env.dockerUsername}/${"react-app"}:${"latest"}"
+                }
+            }
+        }
 
-        // stage('docker deploy'){
-        //        steps {
-        //         bat 'docker stop react-app-con || exit 0'
-        //         bat 'docker rm react-app-con || exit 0'
-        //         bat 'docker run -d -p 80:9000 --name react-app-con react-app'
+        stage('docker deploy'){
+               steps {
+                bat 'docker stop react-app-con || exit 0'
+                bat 'docker rm react-app-con || exit 0'
+                bat 'docker run -d -p 80:9000 --name react-app-con react-app'
                
-        //     }
-        // }
+            }
+        }
 
 
 
