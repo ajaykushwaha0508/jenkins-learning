@@ -82,10 +82,11 @@ pipeline {
         }
 
         stage('docker deploy'){
-               steps{
-                echo "this is deploying"
-                bat "docker run -d -p 9000:9000 react-app:latest"
-               }
+               steps {
+                bat 'docker stop react-app-con || exit 0'
+                bat 'docker rm react-app-con || exit 0'
+                bat 'docker run -d -p 3000:80 --name react-app-con react-app'
+            }
         }
 
 
