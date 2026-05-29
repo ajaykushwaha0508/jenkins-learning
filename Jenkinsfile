@@ -118,7 +118,7 @@ pipeline {
     post {
 
         success {
-            echo 'Build Successfully  Done🚀'
+            echo 'Build Successfully  Done🚀' 
         }
 
         failure {
