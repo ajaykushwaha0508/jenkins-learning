@@ -74,6 +74,14 @@ pipeline {
             }
         }
 
+       stage('docker build'){
+               steps{
+                echo "this is building image in docker"
+                sh "docker build -t react-app:latest ."
+               }
+        }
+
+
     }
 
     post {
